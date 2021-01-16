@@ -1,0 +1,35 @@
+﻿@model ChatViewBindingModel
+    <ul class="group-menu">
+        <li><a href="">Tasks</a></li>
+        <li><a asp-area="Teamleader" asp-controller="Group" asp-action="AddUsers" asp-route-groupId="@Model.GroupId">Add</a></li>
+        <li><a asp-area="Teamleader" asp-controller="Group" asp-action="RemoveUsers" asp-route-groupId="@Model.GroupId">Remove</a></li>
+    </ul>
+<div class="messages-area">
+    <ul>
+        @if (@Model.MessageViews.Any())
+        {
+            foreach (var message in Model.MessageViews)
+            {
+                if (message.MessageIsFromUser)
+                {
+
+                    <div class="right-message">
+                        <li>@message.Content</li>
+                    </div>
+                }
+                else
+                {
+                    <li>@message.Content</li>
+                }
+            }
+        }
+    </ul>
+</div>
+<div class="message-form">
+    <form method="post">
+        <div>
+            <textarea class="form-control" asp-for="@Model.Content" rows="4"></textarea>
+        </div>
+        <button type="submit" class="material-icons">send</button>
+    </form>
+</div>

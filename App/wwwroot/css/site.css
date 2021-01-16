@@ -1,0 +1,202 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.main-div {
+    height: 70%;
+    width: 70%;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+    height: 100%;
+    width: 30%;
+    overflow: auto;
+}
+
+    .sidebar ul li select {
+        list-style: none;
+        background: none;
+        border: none;
+        width: 50%;
+    }
+
+.content-area {
+    border-width: 4px;
+    border-style: solid;
+    border-color: black;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-left: 7px;
+    margin-top: 7px;
+}
+
+.div-content {
+    height: 100%;
+    width: 70%;
+}
+
+    .div-content ul {
+        margin-top: 10px;
+        overflow: auto;
+    }
+
+        .div-content ul li {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5px;
+            border-bottom: 1px solid;
+        }
+
+            .div-content ul li button {
+                border: none;
+                background: none;
+            }
+
+                .div-content ul li button:hover {
+                    cursor: pointer;
+                }
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.div-content .message-form {
+    display: flex;
+    height: 20%;
+    width: 70%;
+    align-items: center;
+    bottom: 0;
+    justify-content: center;
+    position: fixed;
+}
+
+    .div-content .message-form form {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+        .div-content .message-form form button {
+            margin-left: 10px;
+            border-radius: 50%;
+            width: 10%;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .div-content .message-form form textarea {
+            border-radius: 5%;
+            resize: none;
+        }
+
+.div-content .messages-area {
+    height: 70%;
+}
+
+    .div-content .messages-area ul {
+        overflow: auto;
+    }
+
+
+.messages-area ul li {
+    border-bottom: none;
+    background-color: lightblue;
+    padding: 2px;
+    width: 30%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.div-content .messages-area .right-message {
+    width: 100%;
+    height: 35px;
+    text-align: right;
+}
+
+    .div-content .messages-area .right-message li {
+        float: right;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        background-color: burlywood;
+    }
+
+
+.div-content .create-group-form {
+    height: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+    .div-content .create-group-form form {
+        left: 50%;
+        top: 40%;
+        position: absolute;
+    }
+
+        .div-content .create-group-form form h2 {
+            margin-bottom: 7px;
+        }
+
+        .div-content .create-group-form form button {
+            background: none;
+            border: none;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+            .div-content .create-group-form form button:hover {
+                cursor: pointer;
+            }
+
+.div-content .group-menu {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid;
+}
+
+    .div-content .group-menu li {
+        border: none;
+    }
+
+.div-content .add-user-list {
+    height: 100%;
+}
+
+    .div-content .add-user-list form {
+        height: 100%;
+    }
+
+        .div-content .add-user-list form div {
+            width: 100%;
+            margin: 0;
+            position: absolute;
+            left: 60%;
+        }
+
+            .div-content .add-user-list form div button {
+                margin-top: 10px;
+                border: none;
+                background: none;
+                font-size: 40px;
+            }

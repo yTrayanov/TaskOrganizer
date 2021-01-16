@@ -1,0 +1,24 @@
+﻿@model List<UserViewModel>
+
+
+@if (Model.Count == 0)
+{
+    <ul>
+        <li>There are no users</li>
+    </ul>
+}
+else
+{
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>
+            <a >@user.Username</a>
+            <p>@user.Role</p>
+            <a class="material-icons" href="/Admin/Home/Promote/@user.Id">arrow_circle_up</a>
+            <a class="material-icons" href="/Admin/Home/Demote/@user.Id">arrow_circle_down</a>
+        </li>
+    }
+</ul>
+}
+

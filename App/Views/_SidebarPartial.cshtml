@@ -1,0 +1,38 @@
+﻿
+<div class="sidebar content-area">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+    <ul>
+        @if (User.IsInRole("Administrator"))
+        {
+            <li>All Users</li>
+        }
+        else if (User.IsInRole("TeamLeader"))
+        {
+            <li><a asp-area="Teamleader" asp-controller="Group" asp-action="Index">My Groups</a></li>
+            <li><a asp-area="Teamleader" asp-controller="Group" asp-action="Create">Create Group</a></li>
+            <li><a>Pending tasks</a></li>
+            <li>My Tasks</li>
+            //asp-area="Teamleader" asp-controller="Home" asp-action="UntakenTasks"
+        }
+        else
+        {
+            <li><a href="">Groups</a></li>
+            <li><a>Tasks</a></li>
+        }
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    </ul>
+    }
+    else
+    {
+        <ul>
+            <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+        </ul>
+    }
+</div>

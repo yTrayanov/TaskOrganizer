@@ -1,0 +1,21 @@
+﻿@model AddRemoveUserViewBindingModel
+
+<div class="add-user-list">
+    <ul>
+        @if (Model.UserViews.Any())
+        {
+            foreach (var user in Model.UserViews)
+            {
+                <li>
+                    <p>@user.Username</p>
+                    <a class="material-icons"
+                       asp-area="Teamleader"
+                       asp-controller="Group"
+                       asp-action="RemoveUser"
+                       asp-route-groupId="@Model.GroupId"
+                       asp-route-userId="@user.Id">remove</a>
+                </li>
+            }
+        }
+    </ul>
+</div>

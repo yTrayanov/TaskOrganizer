@@ -1,0 +1,14 @@
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\bin\Debug\netcoreapp3.1\DbModels.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\bin\Debug\netcoreapp3.1\DbModels.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\obj\Debug\netcoreapp3.1\Common.csprojAssemblyReference.cache
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\obj\Debug\netcoreapp3.1\Common.csproj.CopyComplete
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\bin\Debug\netcoreapp3.1\Common.deps.json
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\bin\Debug\netcoreapp3.1\Common.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\bin\Debug\netcoreapp3.1\Utilities.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\bin\Debug\netcoreapp3.1\Utilities.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\bin\Debug\netcoreapp3.1\Common.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\obj\Debug\netcoreapp3.1\Common.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\Common\obj\Debug\netcoreapp3.1\Common.pdb

@@ -1,0 +1,12 @@
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\bin\Debug\netcoreapp3.1\DbModels.deps.json
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\bin\Debug\netcoreapp3.1\DbModels.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\obj\Debug\netcoreapp3.1\DbModels.csprojAssemblyReference.cache
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\obj\Debug\netcoreapp3.1\DbModels.AssemblyInfoInputs.cache
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\obj\Debug\netcoreapp3.1\DbModels.AssemblyInfo.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\bin\Debug\netcoreapp3.1\DbModels.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\bin\Debug\netcoreapp3.1\Utilities.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\bin\Debug\netcoreapp3.1\Utilities.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\obj\Debug\netcoreapp3.1\DbModels.csproj.CoreCompileInputs.cache
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\obj\Debug\netcoreapp3.1\DbModels.csproj.CopyComplete
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\obj\Debug\netcoreapp3.1\DbModels.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\DbModels\obj\Debug\netcoreapp3.1\DbModels.pdb
