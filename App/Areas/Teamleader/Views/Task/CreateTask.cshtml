@@ -1,0 +1,25 @@
+﻿@model TaskAbs
+
+
+<div class="create-task-form">
+    <form asp-area="Teamleader" asp-controller="Task" asp-action="Create">
+        <h1>Create new task</h1>
+        <div>
+            <label for="type">Select type please</label>
+            <select name="type"asp-for="@Model.Type">
+                <option value="Group">Group</option>
+                <option value="Individual">Individual</option>
+            </select>
+        </div>
+        <div>
+            <label asp-for="@Model.LevelOfImportance">Level of importance</label>
+            <input  type="number" asp-for="@Model.LevelOfImportance"/>
+        </div>
+
+        <div>
+            <textarea rows="5" asp-for="@Model.Content"></textarea>
+        </div>
+        <button type="submit" class="material-icons">add</button>
+
+    </form>
+</div>

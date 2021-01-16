@@ -1,0 +1,21 @@
+﻿@model GroupTaskViewModel
+
+<div class="add-user-list">
+    <ul>
+        @if (Model.GroupViewModels.Any())
+        {
+            foreach (var group in Model.GroupViewModels)
+            {
+                <li>
+                    <p>@group.Name</p>
+                    <a class="material-icons"
+                       asp-area="Teamleader"
+                       asp-controller="Task"
+                       asp-action="GiveTaskToGroup"
+                       asp-route-taskId="@Model.TaskId"
+                       asp-route-groupId="@group.Id">assignment_turned_in</a>
+                </li>
+            }
+        }
+    </ul>
+</div>

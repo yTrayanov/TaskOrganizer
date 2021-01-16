@@ -82,12 +82,17 @@ namespace DataContext.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("isCompleted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.HasIndex("GroupId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tasks");
                 });
@@ -176,28 +181,6 @@ namespace DataContext.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserGroups");
-                });
-
-            modelBuilder.Entity("DbModels.UserTask", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TaskId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserTasks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -346,9 +329,13 @@ namespace DataContext.Migrations
 
             modelBuilder.Entity("DbModels.Task", b =>
                 {
-                    b.HasOne("DbModels.Group", "GivenToGroup")
+                    b.HasOne("DbModels.Group", "Group")
                         .WithMany("Tasks")
                         .HasForeignKey("GroupId");
+
+                    b.HasOne("DbModels.User", "User")
+                        .WithMany("Tasks")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("DbModels.UserGroup", b =>
@@ -364,19 +351,6 @@ namespace DataContext.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("DbModels.UserTask", b =>
-                {
-                    b.HasOne("DbModels.Task", "Task")
-                        .WithMany()
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DbModels.User", "User")
-                        .WithMany("Tasks")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

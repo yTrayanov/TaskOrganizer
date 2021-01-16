@@ -14,3 +14,5 @@ C:\Users\Yavor\source\repos\TaskOrganizer\Services\obj\Debug\netcoreapp3.1\Servi
 C:\Users\Yavor\source\repos\TaskOrganizer\Services\obj\Debug\netcoreapp3.1\Services.csproj.CopyComplete
 C:\Users\Yavor\source\repos\TaskOrganizer\Services\obj\Debug\netcoreapp3.1\Services.dll
 C:\Users\Yavor\source\repos\TaskOrganizer\Services\obj\Debug\netcoreapp3.1\Services.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\Services\bin\Debug\netcoreapp3.1\DtoModels.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\Services\bin\Debug\netcoreapp3.1\DtoModels.pdb

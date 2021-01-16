@@ -20,30 +20,6 @@ namespace App.Areas.Users.Controllers
             return View();
         }
 
-        public IActionResult GetGroupMessages(int id)
-        {
-            var messages = this.messageService.GetGroupMessages(id);
-
-            return Ok(messages);
-        }
-
-
-        public async System.Threading.Tasks.Task<IActionResult> AddMessage(int groupId,string content)
-        {
-            var user = await this.userManager.GetUserAsync(User);
-
-            var message = this.messageService.CreateMessage(groupId, user, content);
-
-            return Ok(message);
-        }
-
-
-        [HttpPost]
-        public async System.Threading.Tasks.Task<IActionResult> TakeIndividualTask(int taskId)
-        {
-            var user = await this.userManager.GetUserAsync(User);
-
-            return Ok();
-        }
+        
     }
 }

@@ -2438,6 +2438,9 @@
         }
       },
       "DtoModels/1.0.0": {
+        "dependencies": {
+          "Utilities": "1.0.0"
+        },
         "runtime": {
           "DtoModels.dll": {}
         },
@@ -2448,7 +2451,8 @@
       "Services/1.0.0": {
         "dependencies": {
           "DataContext": "1.0.0",
-          "DbModels": "1.0.0"
+          "DbModels": "1.0.0",
+          "DtoModels": "1.0.0"
         },
         "runtime": {
           "Services.dll": {}

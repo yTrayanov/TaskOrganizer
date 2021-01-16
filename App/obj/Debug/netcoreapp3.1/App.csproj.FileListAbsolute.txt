@@ -197,3 +197,9 @@ C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Area
 C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Group\Create.cshtml.g.cs
 C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Group\Chat.cshtml.g.cs
 C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Group\RemoveUsers.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\CreateTask.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\GroupTasks.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\IndividualTasks.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\GiveIndividual.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\TakeForGroup.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\Edit.cshtml.g.cs

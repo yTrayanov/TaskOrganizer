@@ -2,51 +2,25 @@
 {
     using DataContext;
     using DbModels;
-    using Services.TaskDtoModel;
+    using DtoModels;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Utilities;
     public class TaskService : Service
     {
-        private ICollection<IndividualTask> individualTasks = new List<IndividualTask>();
-        private ICollection<GroupTask> groupTasks = new List<GroupTask>();
-        public TaskService(OrganizerDbContext context)
-            : base(context)
+        public TaskService(OrganizerDbContext context) : base(context)
         {
-            mapTasksFromDatabaseToDtoModels();
         }
 
-        private Task GetTaskById(int id)
-        {
-            return this.Context.Tasks.FirstOrDefault(t => t.Id == id);
-        }
-
-
-        private void mapTasksFromDatabaseToDtoModels()
-        {
-            foreach (var task in Context.Tasks)
-            {
-                if (task.Type == Constants.IndividualTaskType)
-                {
-                    TaskAbs individualTask = new IndividualTask(task);
-                    individualTasks.Add((IndividualTask)individualTask);
-                }
-                else
-                {
-                    TaskAbs groupTask = new GroupTask(task);
-                    groupTasks.Add((GroupTask)groupTask);
-                }
-            }
-        }
-
-        public Task CreateTask(string content, string type, int levelOfImportance)
+        public Task CreateTask(TaskAbs task)
         {
             var newTask = new Task()
             {
-                Content = content,
-                Type = type,
-                LevelOfImportance = levelOfImportance,
+                Content = task.Content,
+                LevelOfImportance = task.LevelOfImportance,
+                Type = task.Type,
                 isCompleted = false
             };
 
@@ -56,61 +30,83 @@
             return newTask;
         }
 
-        public TaskAbs FindTaskById(int id, string type)
+        public List<Task> GetUntakenIndividualTasks()
         {
-            TaskAbs task;
-            if (type == Constants.IndividualTaskType)
-                task = this.individualTasks.FirstOrDefault(t => t.Id == id);
-            else
-                task = this.groupTasks.FirstOrDefault(t => t.Id == id);
+            var tasks = this.Context.Tasks
+                .Where(t => t.User == null &&
+                    t.Type == Constants.IndividualTaskType &&
+                    t.isCompleted == false)
+                .ToList();
 
-            return task;
+            return tasks;
         }
 
-
-        public bool DeleteTaskById(int id)
+        public List<Task> GetUntakenGroupTasks()
         {
-            var task = GetTaskById(id);
-            if (task == null)
-            {
-                return false;
-            }
+            var tasks = this.Context.Tasks
+                .Where(t => t.Group == null &&
+                    t.Type == Constants.GroupTaskType &&
+                    t.isCompleted == false)
+                .ToList();
 
-            this.Context.Tasks.Remove(task);
-            this.Context.SaveChanges();
-
-            return true;
-
+            return tasks;
         }
 
-        public ICollection<IndividualTask> GetAllIndividualTasks()
+        public void GiveTaskToUser(string userId , int taskId)
         {
-            return this.individualTasks;
-        }
-
-        public ICollection<GroupTask> GetAllGroupTasks()
-        {
-            return this.groupTasks;
-        }
-
-        public ICollection<IndividualTask> GetUserTasks(string id)
-        {
-
-            return this.individualTasks.Where(it => it.User.Id == id).ToList();
-        }
-
-        public ICollection<GroupTask> GetGroupTasks(int id)
-        {
-
-            return this.groupTasks.Where(g => g.GivenToGroup.Id == id).ToList();
-        }
-
-        public void GiveTaskToUser(int taskId, User user)
-        {
+            var user = this.Context.Users.FirstOrDefault(u => u.Id == userId);
             var task = this.Context.Tasks.FirstOrDefault(t => t.Id == taskId);
 
+            user.Tasks.Add(task);
+            this.Context.SaveChanges();
+        }
+
+        public List<User> GetAllUsersWhoDontHaveThisTask(int taskId)
+        {
+            var users = this.Context.Users
+                .Include(u => u.Tasks)
+                .Where(u => 
+                    !u.Tasks.Any(t => t.Id == taskId) && u.UserName != Constants.AdminUsername)
+                .ToList();
+
+            return users;
+        }
+
+        public void TakeTaskForGroup(int groupId , int taskId)
+        {
+            var task = this.Context.Tasks.FirstOrDefault(t => t.Id == taskId);
+            var group = this.Context.Groups.FirstOrDefault(g => g.Id == groupId);
+
+            group.Tasks.Add(task);
+            this.Context.SaveChanges();
+        }
+
+        public Task FindTaskById(int taskId)
+        {
+            return this.Context.Tasks.FirstOrDefault(t => t.Id == taskId);
+        }
+
+        public Task EditTask(TaskAbs editedTask)
+        {
+            var task = this.FindTaskById(editedTask.Id);
+
+            task.Content = editedTask.Content;
+            task.LevelOfImportance = editedTask.LevelOfImportance;
+            task.Type = editedTask.Type;
+
+            this.Context.SaveChanges();
+            return task;
 
         }
 
+        public List<Task> GetCurrentGroupTasks(int groupId)
+        {
+            var tasks = this.Context.Tasks
+                .Where(t => t.Type == Constants.GroupTaskType
+                    && t.GroupId == groupId)
+                .ToList();
+
+            return tasks;
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace DtoModels
 {
     public class AddRemoveUserViewBindingModel
     {
-        public int GroupId { get; set; }
+        public int ExtraId { get; set; }
         public List<UserViewModel> UserViews { get; set; }
     }
 }

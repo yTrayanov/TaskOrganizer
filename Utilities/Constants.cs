@@ -16,8 +16,8 @@ namespace Utilities
         public const string AdminPassword = "admin123";
         public const string AdminEmail = "admin@admin.bg";
 
-        public const string IndividualTaskType = "individual";
-        public const string GroupTaskType = "group";
+        public const string IndividualTaskType = "Individual";
+        public const string GroupTaskType = "Group";
 
     }
 }

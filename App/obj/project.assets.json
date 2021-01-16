@@ -2827,6 +2827,9 @@
       "DtoModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Utilities": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/DtoModels.dll": {}
         },
@@ -2839,7 +2842,8 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "DataContext": "1.0.0",
-          "DbModels": "1.0.0"
+          "DbModels": "1.0.0",
+          "DtoModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.dll": {}

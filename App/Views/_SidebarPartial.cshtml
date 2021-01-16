@@ -12,9 +12,10 @@
         {
             <li><a asp-area="Teamleader" asp-controller="Group" asp-action="Index">My Groups</a></li>
             <li><a asp-area="Teamleader" asp-controller="Group" asp-action="Create">Create Group</a></li>
-            <li><a>Pending tasks</a></li>
+            <li><a asp-area="Teamleader" asp-controller="Task" asp-action="CreateTask">Create Task</a></li>
+            <li><a asp-area="Teamleader" asp-controller="Task" asp-action="IndividualTasks">Individual Tasks</a></li>
+            <li><a asp-area="Teamleader" asp-controller="Task" asp-action="GroupTasks">Group Tasks</a></li>
             <li>My Tasks</li>
-            //asp-area="Teamleader" asp-controller="Home" asp-action="UntakenTasks"
         }
         else
         {

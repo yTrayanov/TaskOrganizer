@@ -9,7 +9,8 @@
       "Services/1.0.0": {
         "dependencies": {
           "DataContext": "1.0.0",
-          "DbModels": "1.0.0"
+          "DbModels": "1.0.0",
+          "DtoModels": "1.0.0"
         },
         "runtime": {
           "Services.dll": {}
@@ -1092,6 +1093,14 @@
           "DbModels.dll": {}
         }
       },
+      "DtoModels/1.0.0": {
+        "dependencies": {
+          "Utilities": "1.0.0"
+        },
+        "runtime": {
+          "DtoModels.dll": {}
+        }
+      },
       "Utilities/1.0.0": {
         "runtime": {
           "Utilities.dll": {}
@@ -1832,6 +1841,11 @@
       "sha512": ""
     },
     "DbModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DtoModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

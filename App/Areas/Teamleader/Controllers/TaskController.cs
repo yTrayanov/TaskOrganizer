@@ -1,108 +1,191 @@
 ﻿namespace App.Areas.Teamleader.Controllers
 {
-    using DataContext;
     using Services;
-
     using Microsoft.AspNetCore.Mvc;
     using System;
     using Microsoft.AspNetCore.Identity;
     using DbModels;
+    using DtoModels;
+    using System.Collections.Generic;
+    using Utilities;
 
-    // routes: Teamleader/Task/{method}
     public class TaskController : TeamleaderController
     {
         private TaskService taskService;
-
-        public TaskController(UserManager<User>userManager , TaskService taskService ) : base(userManager)
+        private GroupService groupService;
+        public TaskController(UserManager<User> userManager , TaskService taskService , GroupService groupService ) : base(userManager)
         {
             this.taskService = taskService;
+            this.groupService = groupService;
         }
 
-        [HttpPost]
-        public ActionResult CreateTask(string content, string type, int levelOfImportance)
+        public IActionResult CreateTask()
         {
-            var newTask = this.taskService.CreateTask(content, type, levelOfImportance);
+            return View();
+        }
 
-            if(newTask == null)
+        public IActionResult Create(TaskAbs task)
+        {
+            this.taskService.CreateTask(task);
+
+            return RedirectToAction("CreateTask" , "Task" , new { area="Teamleader"});
+        }
+
+        public IActionResult IndividualTasks()
+        {
+            var tasks = this.taskService.GetUntakenIndividualTasks();
+
+            var taskViews = new List<TaskAbs>();
+
+            foreach(var task in tasks)
             {
-                return BadRequest("Task data was not correct");
+                TaskAbs taskView = new IndividualTask
+                {
+                    Id= task.Id,
+                    LevelOfImportance = task.LevelOfImportance,
+                    Content = task.Content,
+                    Type = task.Type,
+                    IsCompleted = task.isCompleted
+                };
+                taskViews.Add(taskView);
             }
 
-            return Ok(newTask);
+            return View(taskViews);
+
         }
 
-        [HttpGet]
-        public ActionResult GetTask(int id , string type)
+        public IActionResult GroupTasks()
         {
-            var task = this.taskService.FindTaskById(id, type);
+            var tasks = this.taskService.GetUntakenGroupTasks();
+            List<TaskAbs> taskViews = MapGroupTasks(tasks);
 
-            if(task == null)
+            return View(taskViews);
+
+        }
+
+
+        public async System.Threading.Tasks.Task<IActionResult> GiveIndividual(int taskId)
+        {
+            var users = this.taskService.GetAllUsersWhoDontHaveThisTask(taskId);
+
+            var usersViews = new List<UserViewModel>();
+
+            foreach (var user in users)
             {
-                return NotFound("Task doesn't exist");
+                var userRoles = await this.UserManager.GetRolesAsync(user);
+                if (userRoles.Contains(Constants.TeamLeader))
+                {
+                    continue;
+                }
+                var userView = new UserViewModel(user.Id, user.UserName);
+                usersViews.Add(userView);
             }
 
-            return Ok(task);
-        }
-
-        [HttpDelete]
-        public ActionResult DeleteTask(int id)
-        {
-            bool isDeleted = this.taskService.DeleteTaskById(id);
-
-            if (!isDeleted)
-                return NotFound("Task wasn't found");
-
-            return Ok("Task deleted successfully");
-        }
-
-        [HttpGet]
-        public ActionResult IndividualTasks()
-        {
-            var tasks = this.taskService.GetAllIndividualTasks();
-
-            if (tasks == null || tasks.Count == 0)
-                return NotFound("There are no individual tasks");
-
-            return Ok(tasks);
-        }
-
-        [HttpGet]
-        public ActionResult GroupTasks()
-        {
-            var tasks = this.taskService.GetAllGroupTasks();
-
-            if (tasks == null || tasks.Count == 0)
-                return NotFound("There are no individual tasks");
-
-            return Ok(tasks);
-        }
-
-        [HttpGet]
-        public async System.Threading.Tasks.Task<IActionResult> GetUserTasks(string id = null)
-        {
-            User user;
-            if(id != null)
+            var viewModel = new AddRemoveUserViewBindingModel()
             {
-                user = await this.UserManager.FindByIdAsync(id);
-            }
-            else
+                ExtraId = taskId,
+                UserViews = usersViews
+            };
+
+            return View(viewModel);
+        }
+
+        public async System.Threading.Tasks.Task<IActionResult> TakeForGroup(int taskId)
+        {
+            var currentUser = await this.UserManager.GetUserAsync(User);
+            var groups = this.groupService.GetUserGroups(currentUser);
+            var groupViews = new List<GroupViewModel>();
+
+            foreach(var group in groups)
             {
-                user = await this.UserManager.GetUserAsync(User);
+                var groupView = new GroupViewModel(group.Id, group.Name);
+                groupViews.Add(groupView);
             }
 
-            var userTasks = this.taskService.GetUserTasks(user.Id);
+            var groupTaskViewModel = new GroupTaskViewModel
+            {
+                TaskId = taskId,
+                GroupViewModels = groupViews
+            };
 
-            return Ok(userTasks);
+            
+
+            return View(groupTaskViewModel);
         }
 
-        [HttpGet]
-        public IActionResult GetGroupTasks(int id)
+
+        public IActionResult GiveTaskToUser(string userId , int taskId)
         {
-            var tasks = this.taskService.GetGroupTasks(id);
+            this.taskService.GiveTaskToUser(userId, taskId);
 
-            return Ok(tasks);
+            return RedirectToAction("IndividualTasks", "Tasks", new { area = "Teamleader"});
+        }
+        public IActionResult GiveTaskToGroup(int groupId, int taskId)
+        {
+            this.taskService.TakeTaskForGroup(groupId, taskId);
+
+            return RedirectToAction("GroupTasks", "Tasks", new { area = "Teamleader" });
         }
 
+        public IActionResult Edit(int taskId)
+        {
+            var task = this.taskService.FindTaskById(taskId);
 
+            var taskView = new TaskAbs()
+            {
+                Id = taskId,
+                Content = task.Content,
+                LevelOfImportance = task.LevelOfImportance,
+                Type = task.Type
+            };
+
+            return View(taskView);
+        }
+
+        public IActionResult EditTask(TaskAbs task , int taskId)
+        {
+            task.Id = taskId;
+
+            this.taskService.EditTask(task);
+
+            if(task.Type == Constants.IndividualTaskType)
+            {
+                return RedirectToAction("IndividualTasks", "Task", new { area = "Teamleader" });
+            }
+
+
+            return RedirectToAction("GroupTasks", "Task", new { area = "Teamleader" });
+        }
+        
+
+        public IActionResult CurrentGroupTasks(int groupId)
+        {
+            var tasks = this.taskService.GetCurrentGroupTasks(groupId);
+
+            var taskViews = MapGroupTasks(tasks);
+
+
+            return View(taskViews);
+        }
+        private static List<TaskAbs> MapGroupTasks(List<Task> tasks)
+        {
+            var taskViews = new List<TaskAbs>();
+
+            foreach (var task in tasks)
+            {
+                var taskView = new GroupTask
+                {
+                    Id = task.Id,
+                    LevelOfImportance = task.LevelOfImportance,
+                    Content = task.Content,
+                    Type = task.Type,
+                    IsCompleted = task.isCompleted
+                };
+                taskViews.Add(taskView);
+            }
+
+            return taskViews;
+        }
     }
+    
 }

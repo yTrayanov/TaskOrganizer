@@ -1,6 +1,6 @@
 ﻿@model ChatViewBindingModel
     <ul class="group-menu">
-        <li><a href="">Tasks</a></li>
+        <li><a asp-area="Teamleader" asp-controller="Task" asp-action="CurrentGroupTasks" asp-route-groupId="@Model.GroupId">Tasks</a></li>
         <li><a asp-area="Teamleader" asp-controller="Group" asp-action="AddUsers" asp-route-groupId="@Model.GroupId">Add</a></li>
         <li><a asp-area="Teamleader" asp-controller="Group" asp-action="RemoveUsers" asp-route-groupId="@Model.GroupId">Remove</a></li>
     </ul>

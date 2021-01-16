@@ -14,7 +14,6 @@
         public DbSet<Message> Messages { get; set; }
         public DbSet<Task> Tasks { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
-        public DbSet<UserTask> UserTasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -28,6 +27,11 @@
                 .WithOne(ug => ug.User)
                 .HasForeignKey(ug => ug.UserId);
 
+            builder.Entity<User>()
+                .HasMany(u => u.Tasks)
+                .WithOne(t => t.User)
+                .HasForeignKey(t => t.UserId);
+
 
             builder.Entity<Group>()
                 .HasMany(g => g.Messages)
@@ -36,7 +40,7 @@
 
             builder.Entity<Group>()
                 .HasMany(g => g.Tasks)
-                .WithOne(t => t.GivenToGroup)
+                .WithOne(t => t.Group)
                 .HasForeignKey(t => t.GroupId);
 
 
@@ -47,6 +51,7 @@
 
             builder.Entity<UserGroup>()
                 .HasKey(ug => new { ug.GroupId , ug.UserId });
+
 
             base.OnModelCreating(builder);
         }

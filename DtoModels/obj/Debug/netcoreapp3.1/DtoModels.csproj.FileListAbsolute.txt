@@ -7,3 +7,6 @@ C:\Users\Yavor\source\repos\TaskOrganizer\DtoModels\obj\Debug\netcoreapp3.1\DtoM
 C:\Users\Yavor\source\repos\TaskOrganizer\DtoModels\obj\Debug\netcoreapp3.1\DtoModels.csproj.CoreCompileInputs.cache
 C:\Users\Yavor\source\repos\TaskOrganizer\DtoModels\obj\Debug\netcoreapp3.1\DtoModels.dll
 C:\Users\Yavor\source\repos\TaskOrganizer\DtoModels\obj\Debug\netcoreapp3.1\DtoModels.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\DtoModels\bin\Debug\netcoreapp3.1\Utilities.dll
+C:\Users\Yavor\source\repos\TaskOrganizer\DtoModels\bin\Debug\netcoreapp3.1\Utilities.pdb
+C:\Users\Yavor\source\repos\TaskOrganizer\DtoModels\obj\Debug\netcoreapp3.1\DtoModels.csproj.CopyComplete

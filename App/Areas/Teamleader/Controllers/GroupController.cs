@@ -104,7 +104,7 @@
 
             var viewModel = new AddRemoveUserViewBindingModel()
             {
-                GroupId = groupId,
+                ExtraId = groupId,
                 UserViews = usersViews
             };
 
@@ -140,7 +140,7 @@
 
             var viewModel = new AddRemoveUserViewBindingModel()
             {
-                GroupId = groupId,
+                ExtraId = groupId,
                 UserViews = usersViews
             };
 

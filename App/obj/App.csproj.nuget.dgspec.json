@@ -370,7 +370,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Yavor\\source\\repos\\TaskOrganizer\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Yavor\\source\\repos\\TaskOrganizer\\Utilities\\Utilities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -435,6 +439,9 @@
               },
               "C:\\Users\\Yavor\\source\\repos\\TaskOrganizer\\DbModels\\DbModels.csproj": {
                 "projectPath": "C:\\Users\\Yavor\\source\\repos\\TaskOrganizer\\DbModels\\DbModels.csproj"
+              },
+              "C:\\Users\\Yavor\\source\\repos\\TaskOrganizer\\DtoModels\\DtoModels.csproj": {
+                "projectPath": "C:\\Users\\Yavor\\source\\repos\\TaskOrganizer\\DtoModels\\DtoModels.csproj"
               }
             }
           }
