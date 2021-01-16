@@ -203,3 +203,10 @@ C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Area
 C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\GiveIndividual.cshtml.g.cs
 C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\TakeForGroup.cshtml.g.cs
 C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\Edit.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\CurrentGroupTasks.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Users\Views\Home\Chat.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Users\Views\Home\CurrentGroupTasks.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Users\Views\Home\GetUserGroups.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Users\Views\_ViewImports.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Users\Views\Home\GetUserTasks.cshtml.g.cs
+C:\Users\Yavor\source\repos\TaskOrganizer\App\obj\Debug\netcoreapp3.1\Razor\Areas\Teamleader\Views\Task\GetAllTasks.cshtml.g.cs

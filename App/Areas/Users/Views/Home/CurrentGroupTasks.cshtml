@@ -1,0 +1,26 @@
+﻿@model TasksGroupViewModel
+
+
+@if (Model.Tasks.Count == 0)
+{
+    <ul>
+        <li>There are no tasks</li>
+    </ul>
+}
+else
+{
+    <div class="task-area">
+        <ul>
+            @foreach (var task in Model.Tasks)
+            {
+                <li>
+                    <div contenteditable class="auto-size">@task.Content</div>
+                    <div>
+                        <p>Level: @task.LevelOfImportance</p>
+                        <p>Type:@task.Type</p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}

@@ -124,7 +124,7 @@
         {
             this.taskService.TakeTaskForGroup(groupId, taskId);
 
-            return RedirectToAction("GroupTasks", "Tasks", new { area = "Teamleader" });
+            return RedirectToAction("GroupTasks", "Task", new { area = "Teamleader" });
         }
 
         public IActionResult Edit(int taskId)
@@ -163,6 +163,52 @@
             var tasks = this.taskService.GetCurrentGroupTasks(groupId);
 
             var taskViews = MapGroupTasks(tasks);
+
+            var viewModel = new TasksGroupViewModel()
+            {
+                GroupId = groupId,
+                Tasks = taskViews
+            };
+
+
+            return View(viewModel);
+        }
+
+        public IActionResult CompleteTask(int taskId , int groupId)
+        {
+            this.taskService.CompleteTask(taskId);
+
+            return RedirectToAction("CurrentGroupTasks", "Task", new { area = "Teamleader" , groupId = groupId });
+        }
+
+        public IActionResult GetAllTasks()
+        {
+            var tasks = this.taskService.GetAllTasks();
+            var taskViews = new List<IndividualGroupTaskViewModel>();
+
+            foreach (var task in tasks)
+            {
+                var taskView = new IndividualGroupTaskViewModel
+                {
+                    Id = task.Id,
+                    Level = task.LevelOfImportance,
+                    Content = task.Content,
+                    Type = task.Type,
+                    IsCompleted = task.isCompleted,
+                };
+
+                if(task.User != null)
+                {
+                    taskView.Username = task.User.UserName;
+                    
+                }
+                else if(task.Group != null)
+                {
+                    taskView.GroupName = task.Group.Name;
+                }
+
+                taskViews.Add(taskView);
+            }
 
 
             return View(taskViews);

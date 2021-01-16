@@ -62,7 +62,6 @@ namespace App
             services.AddTransient(typeof(TaskService));
             services.AddTransient(typeof(GroupService));
             services.AddTransient(typeof(AdminService));
-            services.AddTransient(typeof(MessageService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

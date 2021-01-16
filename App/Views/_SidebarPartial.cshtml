@@ -15,12 +15,12 @@
             <li><a asp-area="Teamleader" asp-controller="Task" asp-action="CreateTask">Create Task</a></li>
             <li><a asp-area="Teamleader" asp-controller="Task" asp-action="IndividualTasks">Individual Tasks</a></li>
             <li><a asp-area="Teamleader" asp-controller="Task" asp-action="GroupTasks">Group Tasks</a></li>
-            <li>My Tasks</li>
+            <li><a asp-area="Teamleader" asp-controller="Task" asp-action="GetAllTasks">All Tasks</a></li>
         }
         else
         {
-            <li><a href="">Groups</a></li>
-            <li><a>Tasks</a></li>
+            <li><a asp-area="Users" asp-controller="Home" asp-action="GetUserGroups">My Groups</a></li>
+            <li><a asp-area="Users" asp-controller="Home" asp-action="GetUserTasks">My Tasks</a></li>
         }
         <li>
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

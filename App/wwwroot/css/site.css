@@ -249,3 +249,7 @@ textarea {
 .content-area .edit-task-form select {
     width: 53%;
 }
+
+.content-area .all-task-area{
+    overflow:auto;
+}

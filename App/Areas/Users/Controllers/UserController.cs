@@ -11,16 +11,12 @@
     [Authorize(Roles = "User,TeamLeader")]
     public class UserController : Controller
     {
-        public UserController(UserManager<User> userManager, MessageService messageService, TaskService taskService)
+        public UserController(UserManager<User> userManager)
         {
-            this.userManager = userManager;
-            this.messageService = messageService;
-            this.taskService = taskService;
+            this.UserManager = userManager;
         }
 
-        public UserManager<User> userManager { get; set; }
-        public MessageService messageService { get; set; }
-        public TaskService taskService { get; set; }
+        public UserManager<User> UserManager { get; set; }
 
     }
 }

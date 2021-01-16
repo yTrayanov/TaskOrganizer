@@ -2,11 +2,13 @@
 {
     using DataContext;
     using DbModels;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Utilities;
 
     [Area("Teamleader")]
-    //[Authorize(Roles = Constants.TeamLeader)]
+    [Authorize(Roles = Constants.TeamLeader)]
     public class TeamleaderController : Controller
     {
         protected TeamleaderController(UserManager<User> userManager)

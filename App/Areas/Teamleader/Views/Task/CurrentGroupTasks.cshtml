@@ -1,0 +1,46 @@
+﻿@model TasksGroupViewModel
+
+
+@if (Model.Tasks.Count == 0)
+{
+    <ul>
+        <li>There are no tasks</li>
+    </ul>
+}
+else
+{
+    <div class="task-area">
+        <ul>
+            @foreach (var task in Model.Tasks)
+            {
+                <li>
+                    <div contenteditable class="auto-size">@task.Content</div>
+                    <div>
+                        <p>Level: @task.LevelOfImportance</p>
+                        <p>Type:@task.Type</p>
+                        @if (this.User.IsInRole("TeamLeader"))
+                        {
+                            <a class="material-icons" 
+                               asp-area="Teamleader" 
+                               asp-controller="Task" 
+                               asp-action="Edit" 
+                               asp-route-taskId="@task.Id">create</a>
+
+                            <a class="material-icons" 
+                               asp-area="Teamleader" 
+                               asp-controller="Task" 
+                               asp-action="TakeForGroup" 
+                               asp-route-taskId="@task.Id">add_task</a>
+
+                            <a class="material-icons" 
+                               asp-area="Teamleader" 
+                               asp-controller="Task" asp-action="CompleteTask" 
+                               asp-route-taskId="@task.Id" 
+                               asp-route-groupId="@Model.GroupId">check_circle</a>
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}

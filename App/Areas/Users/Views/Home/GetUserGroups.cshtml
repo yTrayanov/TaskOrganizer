@@ -1,0 +1,20 @@
+﻿@model List<GroupViewModel>;
+
+
+<ul>
+    @if (Model.Count == 0)
+    {
+
+        <li>There are no groups</li>
+    }
+    else
+    {
+        @foreach (var group in Model)
+        {
+            <li>
+                <a asp-area="Users" asp-controller="Home" asp-action="Chat" asp-route-groupId=@group.Id>@group.Name</a>
+            </li>
+        }
+    }
+
+</ul>

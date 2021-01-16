@@ -103,10 +103,36 @@
         {
             var tasks = this.Context.Tasks
                 .Where(t => t.Type == Constants.GroupTaskType
-                    && t.GroupId == groupId)
+                    && t.GroupId == groupId
+                    && !t.isCompleted)
                 .ToList();
 
             return tasks;
+        }
+
+        public void CompleteTask(int taskId)
+        {
+            var task = this.FindTaskById(taskId);
+            task.isCompleted = true;
+            this.Context.SaveChanges();
+        }
+
+        public List<Task> GetCurrentUserTasks(User user)
+        {
+            var tasks = this.Context.Tasks
+                .Where(t => t.Type == Constants.IndividualTaskType && t.User == user && !t.isCompleted)
+                .ToList();
+
+            return tasks;
+        }
+
+        public List<Task> GetAllTasks()
+        {
+            return this.Context.Tasks
+                .OrderByDescending(t => t.LevelOfImportance)
+                .Include(t => t.User)
+                .Include(t => t.Group)
+                .ToList();
         }
     }
 }
